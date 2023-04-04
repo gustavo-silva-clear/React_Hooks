@@ -2,9 +2,15 @@ import React, { useState, useRef, useEffect } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 import SectionTitle from '../../components/layout/SectionTitle'
 
-const merge = function(s1 , s2) {
+const merge = function (s1, s2) {
 
-return s1 + s2
+    return [...s1].map(function (e, i) {
+
+        return `${e}${s2[i] || ""}`
+
+    }).join("")
+
+
 
 }
 
@@ -43,7 +49,7 @@ const UseRef = (props) => {
 
                 <div>
                     <span className="text">Valor: </span>
-                    <span className="text">{value1}[</span>
+                    <span className="text">{merge(value1, value2)}[</span>
 
                     <span className="text red">{count.current}</span>
                     <span className="text">]</span>
@@ -51,7 +57,7 @@ const UseRef = (props) => {
 
 
 
-                <input type="text" className="input" ref={myInput1}  value={value1} onChange={e => setValue1(e.target.value)} />
+                <input type="text" className="input" ref={myInput1} value={value1} onChange={e => setValue1(e.target.value)} />
 
             </div>
 

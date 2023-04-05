@@ -6,18 +6,11 @@ const UseCallback = (props) => {
 
     const [count, setCount] = useState(0);
 
+    const inc = useCallback(function(delta) {
 
-    useCallback(function (delta){
+        setCount(curr => curr + delta)
 
-        setCount(count + delta) 
-
-    })
-
-    function inc(delta) {
-
-        setCount(count + delta)
-
-    }
+    }, [setCount])
 
     return (
         <div className="UseCallback">
